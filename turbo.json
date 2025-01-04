@@ -1,22 +1,32 @@
 {
   "baseBranch": "origin/main",
-  "pipeline": {
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "next-commerce#build": {
       "dependsOn": [
-        "^build",
-        "$COMMERCE_PROVIDER",
-        "$BIGCOMMERCE_STOREFRONT_API_URL",
-        "$NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
-        "$NEXT_PUBLIC_SWELL_STORE_ID"
+        "^build"
       ],
-      "outputs": [".next/**"]
+      "outputs": [
+        ".next/**"
+      ],
+      "env": [
+        "COMMERCE_PROVIDER",
+        "BIGCOMMERCE_STOREFRONT_API_URL",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SWELL_STORE_ID"
+      ]
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": []
     },
     "lint": {
@@ -32,7 +42,9 @@
       "cache": false
     },
     "types": {
-      "outputs": ["dist/**/*.d.ts"]
+      "outputs": [
+        "dist/**/*.d.ts"
+      ]
     }
   }
 }
